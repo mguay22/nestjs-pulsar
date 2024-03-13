@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nestjs-pulsar
+  name: nestjs-pulsar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nestjs-pulsar
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nestjs-pulsar
+    spec:
+      containers:
+        - image: mguay22/nestjs-pulsar:latest
+          name: nestjs-pulsar
+          env:
+            - name: PULSAR_SERVICE_URL
+              value: pulsar://pulsar-broker.pulsar.svc.cluster.local:6650
+status: {}
